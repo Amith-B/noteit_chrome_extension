@@ -1,6 +1,11 @@
 import "./TabContent.scss";
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import "react-quill/dist/quill.snow.css";
+
+import React, { useContext, useEffect, useMemo, useState } from "react";
+import { formats, modules } from "./react-quill-formats";
+
 import NotesContext from "../../context/notesContext";
+import ReactQuill from "react-quill";
 
 function TabContent() {
   const { notes, activeFolderId, updateNotes } = useContext(NotesContext);
@@ -70,16 +75,20 @@ function TabContent() {
             <label htmlFor="title">Title</label>
           </div>
           <div className="tab-content">
-            <textarea
+            <ReactQuill
               id="content"
               autoFocus
-              className={"tab-content-input " + (!content ? "empty" : "")}
+              theme="snow"
+              preserveWhitespace
+              formats={formats}
+              modules={modules}
               value={content}
-              onChange={(event) => {
-                setContent(event.target.value);
+              onChange={setContent}
+              style={{
+                transform: "translateY(-20px)",
               }}
+              className={"tab-content-input"}
             />
-            <label htmlFor="content">Add notes...</label>
           </div>
         </div>
       ) : activeFolderId ? (
