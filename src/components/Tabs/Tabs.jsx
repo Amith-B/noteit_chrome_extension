@@ -138,7 +138,14 @@ function Tabs({ onSidePanelToggle }) {
                   className="clickable tab-close flex-center"
                   onClick={(event) => {
                     event.stopPropagation();
-                    closeTab(activeFolderId, note.id);
+
+                    if (
+                      window.confirm(
+                        "Are you sure you want to delete the notes? You will not be able to undo this action"
+                      )
+                    ) {
+                      closeTab(activeFolderId, note.id);
+                    }
                   }}
                 >
                   +
