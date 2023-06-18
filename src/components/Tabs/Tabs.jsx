@@ -8,11 +8,10 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { downloadJSON, downloadXLSX } from "../../utils/downloadNotes";
 
 import NotesContext from "../../context/notesContext";
 import SidePanel from "../SidePanel/SidePanel";
-import arrowLeft from "../../assets/arrow-previous-left.svg";
+import downloadJSON from "../../utils/downloadNotes";
 import hamburger from "../../assets/hamburger.svg";
 import verticalDot from "../../assets/vertical_dots.svg";
 
@@ -88,10 +87,6 @@ function Tabs({ onSidePanelToggle }) {
     }
   };
 
-  const handleDownloadXlsx = () => {
-    downloadXLSX(notes);
-  };
-
   const handleDownloadJson = () => {
     downloadJSON(notes);
   };
@@ -113,13 +108,10 @@ function Tabs({ onSidePanelToggle }) {
     <section className="tab__container">
       <button
         className="clickable notes-panel__toggle flex-center"
+        style={{ display: panelOpen ? "none" : "block" }}
         onClick={() => setPanelOpen((toggle) => !toggle)}
       >
-        <img
-          style={{ height: "16px" }}
-          src={panelOpen ? arrowLeft : hamburger}
-          alt="3-dot"
-        />
+        <img style={{ height: "16px" }} src={hamburger} alt="hamburger" />
       </button>
       <div className="tab__controls">
         {" "}
@@ -178,20 +170,24 @@ function Tabs({ onSidePanelToggle }) {
         >
           <h4>Choose Theme</h4>
           <hr />
-          {themes.map((theme) => (
-            <div
-              className={
-                "clickable notes-menu-item " +
-                (theme === activeTheme ? "active" : "")
-              }
-              key={theme}
-              onClick={() => {
-                setActiveTheme(theme);
-              }}
-            >
-              {theme.charAt(0).toUpperCase() + theme.slice(1)}
-            </div>
-          ))}
+          <div className="notes-menu-item color-palette-list">
+            {themes.map((theme) => (
+              <div
+                className={
+                  "color-palette clickable " +
+                  (activeTheme === theme ? "active" : "")
+                }
+                key={theme}
+                onClick={() => {
+                  setActiveTheme(theme);
+                }}
+              >
+                <div className={"color-slice secondary theme " + theme}></div>
+                <div className={"color-slice primary theme " + theme}></div>
+              </div>
+            ))}
+          </div>
+
           <hr />
           <h4>Storage Used</h4>
           <hr />
@@ -209,12 +205,6 @@ function Tabs({ onSidePanelToggle }) {
           <div className="notes-menu-item export-import">
             <button
               className="export-import-button clickable"
-              onClick={handleDownloadXlsx}
-            >
-              .xlsx
-            </button>
-            <button
-              className="export-import-button clickable"
               onClick={handleDownloadJson}
             >
               .json
@@ -225,10 +215,7 @@ function Tabs({ onSidePanelToggle }) {
           </div>
           <hr />
           <h4>
-            Import From{" "}
-            <span style={{ padding: "0 6px" }} className="export-import-button">
-              .json
-            </span>
+            Import From <code>.json</code>
           </h4>
           <hr />
           <div className="notes-menu-item export-import">

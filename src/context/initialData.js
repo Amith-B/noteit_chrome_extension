@@ -6,7 +6,7 @@ const initialData = {
       list: [],
     },
   },
-  themes: ["default", "blue", "purple", "darkgreen", "pink", "dark"],
+  themes: ["default", "blue", "purple", "brown", "pink", "dark"],
   activeTheme: "default",
   activeFolderId: "folder_uniqueid",
 };

@@ -1,19 +1,17 @@
 .sidepanel {
   height: 100%;
   width: 240px;
-  background-color: var(--primary-bg);
-  box-shadow: var(--shadow);
+  background-color: var(--tab-theme-bg);
   color: var(--text-color);
   display: flex;
   flex-direction: column;
-  border-right: 1px solid var(--text-color);
 
   &__container {
     position: fixed;
     top: 0;
     left: 0;
     width: 240px;
-    height: 500px;
+    height: 100%;
     z-index: 20;
     opacity: 0;
     visibility: hidden;
@@ -49,14 +47,42 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--shadow-inset);
+    height: 42px;
+    position: relative;
+
+    &::after,
+    &::before {
+      background: transparent;
+      border-radius: 50%;
+      content: " ";
+      display: block;
+      height: var(--outer-curve-size);
+      position: absolute;
+      width: var(--outer-curve-size);
+    }
 
     &.active {
-      background-color: var(--tab-theme-bg);
+      background-color: var(--primary-bg);
+      width: calc(100% + 8px);
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      box-shadow: none;
+      padding-right: 18px;
+
+      &::before {
+        box-shadow: var(--outer-curve-size-half) var(--outer-curve-size-half)
+          var(--primary-bg);
+        right: 0;
+        top: calc(var(--outer-curve-size) * -1);
+      }
+      &::after {
+        bottom: calc(var(--outer-curve-size) * -1);
+        box-shadow: calc(var(--outer-curve-size-half) * -1)
+          var(--outer-curve-size-half) var(--primary-bg);
+        right: 0;
+        transform: rotate(-180deg);
+      }
       .folder {
-        &-notes-count {
-          background-color: var(--tab-inactive-bg);
-          color: black;
-        }
         &-name {
           color: var(--text-color);
         }
@@ -132,5 +158,19 @@
   background-color: var(--tab-theme-bg);
   h3 {
     font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .folder-notes-count {
+      background-color: var(--tab-inactive-bg);
+      color: black;
+    }
+  }
+
+  &-options {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
   }
 }

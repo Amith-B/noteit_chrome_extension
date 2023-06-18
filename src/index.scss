@@ -15,36 +15,28 @@
     --icon-filter: invert(0);
   }
   &.blue {
-    --primary-bg: #c6cdff;
-    --tab-theme-bg: #4266ff;
-    --tab-add-bg: #ffffffbc;
+    --primary-bg: #e8e8e8;
+    --tab-theme-bg: #4b9fc9;
+    --tab-add-bg: #fef6f0;
     --tab-inactive-bg: #ffffff9c;
     --text-color: black;
     --icon-filter: invert(0);
   }
   &.pink {
-    --primary-bg: #ffaef4;
-    --tab-theme-bg: deeppink;
-    --tab-add-bg: #ffffffbc;
-    --tab-inactive-bg: #ffffff9c;
+    --primary-bg: #edd3cc;
+    --tab-theme-bg: #c0838e;
+    --tab-add-bg: #fef6f0;
+    --tab-inactive-bg: #fbf7f8;
     --text-color: black;
     --icon-filter: invert(0);
   }
   &.purple {
-    --primary-bg: #b58fcd;
-    --tab-theme-bg: #7c51d5;
+    --primary-bg: #a48ab5;
+    --tab-theme-bg: #7f6da8;
     --tab-add-bg: #ffffffbc;
     --tab-inactive-bg: #ffffff9c;
     --text-color: white;
     --icon-filter: invert(0);
-  }
-  &.darkgreen {
-    --primary-bg: #5e7971;
-    --tab-theme-bg: #18473c;
-    --tab-add-bg: #ffffffbc;
-    --tab-inactive-bg: #ffffff9c;
-    --text-color: white;
-    --icon-filter: invert(1);
   }
   &.dark {
     --primary-bg: rgb(74, 74, 74);
@@ -53,6 +45,14 @@
     --tab-inactive-bg: #ffffff9c;
     --text-color: white;
     --icon-filter: invert(1);
+  }
+  &.brown {
+    --primary-bg: #e4ba9f;
+    --tab-theme-bg: #9e6c54;
+    --tab-add-bg: #fef6f0;
+    --tab-inactive-bg: #ffffff9c;
+    --text-color: black;
+    --icon-filter: invert(0);
   }
 }
 
@@ -64,6 +64,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   width: 800px;
   height: 500px;
+  transform: scale(1);
 }
 
 #root,

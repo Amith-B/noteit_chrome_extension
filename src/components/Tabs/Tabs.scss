@@ -129,50 +129,8 @@
     opacity: 0.6;
     color: unset;
   }
-  &-menu {
-    position: absolute;
-    right: 18px;
-    top: 30px;
-    background-color: var(--primary-bg);
-    border-radius: 6px;
-    color: var(--text-color);
-    transform: scaleY(0);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    font-size: 12px;
-
-    h4,
-    &-item {
-      padding: 4px 10px;
-    }
-
-    .active {
-      background-color: var(--tab-theme-bg);
-    }
-
-    &__overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      left: 0;
-      top: 0;
-      visibility: hidden;
-      opacity: 0;
-      transition: all 0.2s ease-in-out;
-      z-index: 20;
-
-      &.visible {
-        visibility: visible;
-        opacity: 1;
-        .notes-menu {
-          transform: scaleY(1);
-          transform-origin: 0% 0%;
-          transition: all 0.2s ease-in-out;
-        }
-      }
-    }
-  }
 }
+
 .export-import {
   display: flex;
   gap: 6px;
@@ -181,5 +139,100 @@
     border-radius: 6px;
     background-color: var(--tab-theme-bg);
     color: var(--text-color);
+  }
+}
+
+.notes-menu {
+  position: absolute;
+  right: 18px;
+  top: 30px;
+  background-color: var(--primary-bg);
+  border-radius: 6px;
+  color: var(--text-color);
+  transform: scaleY(0);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  font-size: 12px;
+  max-width: 260px;
+
+  h4 {
+    font-weight: 900;
+  }
+
+  h4,
+  &-item {
+    padding: 4px 10px;
+  }
+
+  .flex-dir-col {
+    flex-direction: column;
+  }
+
+  .active {
+    background-color: var(--tab-theme-bg);
+  }
+
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 20;
+
+    &.visible {
+      visibility: visible;
+      opacity: 1;
+      .notes-menu {
+        transform: scaleY(1);
+        transform-origin: 0% 0%;
+        transition: transform 0.2s ease-in-out;
+      }
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  gap: 6px;
+
+  &-button {
+    border-radius: 6px;
+    background-color: var(--tab-theme-bg);
+    color: var(--text-color);
+  }
+}
+
+.color-palette-list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.color-palette {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--text-color);
+  &.active {
+    box-shadow: 0 0 0px 2px var(--text-color);
+  }
+}
+
+.color-slice {
+  width: 10px;
+  height: 20px;
+
+  &.primary {
+    background-color: var(--primary-bg);
+  }
+
+  &.secondary {
+    background-color: var(--tab-theme-bg);
   }
 }
