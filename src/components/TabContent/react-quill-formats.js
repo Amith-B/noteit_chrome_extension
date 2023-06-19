@@ -9,7 +9,6 @@ export const modules = {
       { indent: "+1" },
     ],
     ["link", "image"],
-    ["clean"],
   ],
 };
 
