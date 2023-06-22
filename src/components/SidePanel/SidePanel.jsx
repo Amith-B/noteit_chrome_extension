@@ -1,6 +1,6 @@
 import "./SidePanel.scss";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import NotesContext from "../../context/notesContext";
 import arrowLeft from "../../assets/arrow-previous-left.svg";
@@ -24,6 +24,20 @@ function SidePanel({ open, onClose }) {
     setRenameId("");
     setRenameValue("");
   };
+
+  const handleScroll = () => {
+    const activeTab = document.querySelector(".folder-container.active");
+
+    if (activeTab) {
+      activeTab.scrollIntoView();
+    }
+  };
+
+  useEffect(() => {
+    if (open) {
+      handleScroll();
+    }
+  }, [activeFolderId, open]);
 
   return (
     <div className={"sidepanel__container " + (open ? "visible" : "")}>
